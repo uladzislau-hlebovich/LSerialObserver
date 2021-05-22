@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LSerialObserver</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 20px;
+      background: rgb(245, 245, 245);
+    }
+
+    #fields {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      text-align: center !important;
+    }
+
+    .field {
+      flex: 0 0 21%;
+      margin: 10px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    .name {
+      display: block;
+      font-size: 30px;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .value {
+      font-family: monospace;
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1.125;
+    }
+
+    .container {
+      padding: 0 15px;
+    }
+
+    @media (min-width: 991.98px) {
+      .container {
+        padding: 0 calc(50% - 480px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div id="fields">ы</div>
+</div>
+</body>
+
+<script>
+  const parent = document.getElementById('fields');
+
+  // Добавить компонент на страницу
+  function createFieldComponent(name, valuesArray, parent) {
+    const values = valuesArray.join('\n')
+
+    const html = `
+      <div class='field'>
+        <div class='name'>${name}</div>
+        <div class='value'>${values}</div>
+      </div>
+    `;
+    parent.insertAdjacentHTML('beforeend', html);
+  }
+
+  // Запросить данные с сервера
+  async function fetchData(url = "/API/Observer") {
+    const res = await fetch(url);
+    return res.json();
+  }
+
+  // Тик таймера
+  async function Tick() {
+    // Дождаться данных с сервера
+    const observer = await fetchData();
+
+    // Очистить страницу
+    parent.innerHTML = '';
+    // Цикл по каждому полю в пакете
+    for (const [name, valuesArray] of Object.entries(observer["LastPackage"]["Objects"])) {
+      // Добавить компонент на страницу
+      createFieldComponent(name, valuesArray, parent);
+    }
+  }
+
+  // Установить таймер на 1 сек
+  setInterval(() => {
+    Tick().then();
+  }, 1000);
+
+</script>
+</html>
