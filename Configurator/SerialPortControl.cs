@@ -1,3 +1,6 @@
+using System;
+using System.IO.Ports;
+using System.Windows.Forms;
 using LSerialObserver;
 
 namespace Configurator
@@ -35,7 +38,7 @@ namespace Configurator
             {
                 DevicePath = comboBoxDevicePath.Text,
                 BaudRate = (int) comboBoxBaudRate.SelectedValue,
-                //Parity = (Parity)comboBoxParity.SelectedValue,
+                Parity = (Parity)comboBoxParity.SelectedValue,
                 DataBits = (int) comboBoxDataBits.SelectedValue,
                 StopBits = (double) comboBoxStopBits.SelectedValue
             };

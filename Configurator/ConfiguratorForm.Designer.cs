@@ -33,6 +33,7 @@ namespace Configurator
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageSerialPort = new System.Windows.Forms.TabPage();
             this.tabPageStruct = new System.Windows.Forms.TabPage();
+            this.serialPortControl1 = new Configurator.SerialPortControl();
             this.structControl1 = new Configurator.StructControl();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,6 @@ namespace Configurator
             this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.serialPortControl2 = new Configurator.SerialPortControl();
             this.tableLayout.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageSerialPort.SuspendLayout();
@@ -77,7 +77,7 @@ namespace Configurator
             // 
             // tabPageSerialPort
             // 
-            this.tabPageSerialPort.Controls.Add(this.serialPortControl2);
+            this.tabPageSerialPort.Controls.Add(this.serialPortControl1);
             this.tabPageSerialPort.Location = new System.Drawing.Point(4, 24);
             this.tabPageSerialPort.Name = "tabPageSerialPort";
             this.tabPageSerialPort.Padding = new System.Windows.Forms.Padding(3);
@@ -149,13 +149,13 @@ namespace Configurator
             this.saveFileDialog.FileName = "Observer.json";
             this.saveFileDialog.Filter = "Observer.json|Observer.json";
             // 
-            // serialPortControl2
+            // serialPortControl1
             // 
-            this.serialPortControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.serialPortControl2.Location = new System.Drawing.Point(3, 3);
-            this.serialPortControl2.Name = "serialPortControl2";
-            this.serialPortControl2.Size = new System.Drawing.Size(364, 197);
-            this.serialPortControl2.TabIndex = 0;
+            this.serialPortControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serialPortControl1.Location = new System.Drawing.Point(3, 3);
+            this.serialPortControl1.Name = "serialPortControl1";
+            this.serialPortControl1.Size = new System.Drawing.Size(364, 197);
+            this.serialPortControl1.TabIndex = 0;
             // 
             // ConfiguratorForm
             // 
@@ -184,7 +184,6 @@ namespace Configurator
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageSerialPort;
         private System.Windows.Forms.TabPage tabPageStruct;
-        private SerialPortControl serialPortControl;
         private StructControl structControl1;
         private SerialPortControl serialPortControl1;
         private System.Windows.Forms.MenuStrip menuStrip;
@@ -193,7 +192,6 @@ namespace Configurator
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private SerialPortControl serialPortControl2;
     }
 }
 
