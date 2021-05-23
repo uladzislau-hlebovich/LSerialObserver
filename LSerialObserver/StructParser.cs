@@ -69,17 +69,23 @@ namespace LSerialObserver
         {
             var tcs = new TaskCompletionSource<List<byte>>();
 
-            void ResolveIfHasEnoughBytes()
+            if (_buffer.Count >= count)
             {
-                BytesReceived += ResolveIfHasEnoughBytes;
-                if (_buffer.Count >= count)
-                {
-                    tcs.TrySetResult(PopBytes(count));
-                    BytesReceived -= ResolveIfHasEnoughBytes;
-                }
+                tcs.TrySetResult(PopBytes(count));
             }
+            else
+            {
+                void ResolveIfHasEnoughBytes()
+                {
+                    if (_buffer.Count >= count)
+                    {
+                        BytesReceived -= ResolveIfHasEnoughBytes;
+                        tcs.TrySetResult(PopBytes(count));
+                    }
+                }
 
-            ResolveIfHasEnoughBytes();
+                BytesReceived += ResolveIfHasEnoughBytes;
+            }
 
             return tcs.Task;
         }
