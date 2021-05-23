@@ -1,0 +1,34 @@
+{
+  "SerialPort": {
+    "DevicePath": "COM4",
+    "BaudRate": 9600,
+    "Parity": "None",
+    "DataBits": 8,
+    "StopBits": 1
+  },
+  "Struct": {
+    "Endianness": "Big",
+    "Fields": {
+      "Shorts": {
+        "Type": "Short",
+        "Count": 2
+      },
+      "Bytes": {
+        "Type": "Byte",
+        "Count": 10
+      },
+      "Str": {
+        "Type": "AsciiString",
+        "Count": 1
+      },
+      "Unsigned Long": {
+        "Type": "ULong",
+        "Count": 1
+      },
+      "Double": {
+        "Type": "Double",
+        "Count": 1
+      }
+    }
+  }
+}
